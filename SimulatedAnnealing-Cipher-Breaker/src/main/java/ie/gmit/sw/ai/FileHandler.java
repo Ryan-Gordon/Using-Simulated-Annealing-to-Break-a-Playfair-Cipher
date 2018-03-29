@@ -14,7 +14,31 @@ import java.nio.file.Paths;
 public class FileHandler {
 	
 	
+	public String readFile(String fileName) throws Throwable  {
+		BufferedReader br = new BufferedReader(new FileReader(fileName));
+	    try {
+	        StringBuilder sb = new StringBuilder();
+	        String line = br.readLine();
+
+	        while (line != null) {
+	            sb.append(line);
+	            sb.append("\n");
+	            line = br.readLine();
+	        }
+	        return sb.toString();
+	    } finally {
+	        br.close();
+	    }
+	}
 	
+	public void writeToFile(String name, String text) {
+		try {
+			System.out.println("Writing to file...");
+			Files.write(Paths.get("./" + name), text.getBytes());
+		} catch (IOException e) {
+			System.out.println("Error writing to file");
+		}
+	}
 	
 	public List<String> listFiles(String path) {
 		List<String> tmpLst = new ArrayList<String>();
