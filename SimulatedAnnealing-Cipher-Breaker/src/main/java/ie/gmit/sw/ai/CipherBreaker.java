@@ -15,14 +15,15 @@ public class CipherBreaker
         FileHandler fh = new FileHandler();
         System.out.println(fh.listFiles("./files"));
         
-        PlayfairCipher play = new PlayfairCipher(fh.readFile("./files/the-hobbit-cp1.txt"));
-       
-
-        
+        PlayfairCipher playDecryption = new PlayfairCipher(fh.readFile("./files/the-hobbit-cp1.txt"));
         
         System.out.println(fh.readFile("./files/the-hobbit-cp1.txt"));
-        System.out.println(play.decrypt("THEQUICKBROWNFXMPDVLAZYGS"));
+        System.out.println(playDecryption.decrypt("THEQUICKBROWNFXMPDVLAZYGS"));
         
+        PlayfairCipher playEncryption = new PlayfairCipher("Happy Days");
+        System.out.println(playEncryption.encrypt("THEQUICKBROWNFXMPDVLAZYGS"));
+        PlayfairCipher playEncryption2 = new PlayfairCipher(playEncryption.encrypt("THEQUICKBROWNFXMPDVLAZYGS"));
+        System.out.println(playEncryption2.decrypt("THEQUICKBROWNFXMPDVLAZYGS"));
     }
 }
     

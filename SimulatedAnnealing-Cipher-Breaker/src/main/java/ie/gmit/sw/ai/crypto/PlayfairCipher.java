@@ -87,7 +87,33 @@ public class PlayfairCipher extends AbstractCipher {
 	}
 
 	public String encrypt(String key) {
-		return "";
-	}
+		StringBuilder cipherText = new StringBuilder();
 
+		for (String pair : this.diagraphs) {
+			char ch1, ch2;
+			//Set up the rows and columns to evaluate our rules on
+			int r1 = key.indexOf(pair.charAt(0)) / 5; 
+			int c1 = key.indexOf(pair.charAt(0)) % 5; 
+			int r2 = key.indexOf(pair.charAt(1)) / 5; 
+			int c2 = key.indexOf(pair.charAt(1)) % 5;
+			
+			
+			//There are three ways for the Playfair Cipher to shuffle characters 
+			if (c1 == c2) { // Diagraph Letters in Same Column
+				
+				ch1 = key.charAt((r1 + 1) % 5 * 5 + c1);
+				ch2 = key.charAt((r2 + 1) % 5 * 5 + c2);
+			} else if (r1 == r2) { // Diagraph Letters in Same Row
+				ch1 = key.charAt(r1 * 5 + ((c1 + 1) % 5));
+				ch2 = key.charAt(r2 * 5 + ((c2 + 1) % 5));
+			} else {  // Diagraph Letters in Different Rows and Columns
+				ch1 = key.charAt(r1 * 5 + c2); 
+				ch2 = key.charAt(r2 * 5 + c1); 
+			}
+			//Append result to SB
+			cipherText.append(Character.toString(ch1) + Character.toString(ch2));
+		}
+
+		return cipherText.toString();
+	}
 }
