@@ -49,7 +49,16 @@ public class KeyHandler {
 				// Reverse the whole key (2%).
 				this.reverseKey();	
 				break;
-			
+			case 7:
+			case 8:
+				// Swap columns (2%).
+				this.swapRandomColumns();
+				break;
+			case 9:
+			case 10:
+				// Swap random rows (2%).
+				this.swapRandomRows();
+				break;
 			default:
 				// The majority case; Swap Random characters (90%)
 				this.swapRandomChars();			
@@ -58,7 +67,38 @@ public class KeyHandler {
 		String shuffledKey = this.generateKey(this.getParentTable());
 		return shuffledKey;
 	}
-	
+	// Swap around random rows in the current key node to set as the next child node.
+	private void swapRandomRows() {
+		int r1 = 0, r2 = 0;
+		// Select two unique columns.
+		while(r1 == r2){
+			r1 = (int)Math.floor(Math.random()*5);
+			r2 = (int)Math.floor(Math.random()*5);
+		}
+		// Swap.
+		char[][] table = this.getParentTable();
+		char[] tmpMatrix = table[r1];
+		table[r1] = table[r2];
+		table[r2] = tmpMatrix;
+		this.setParentTable(table);
+	}
+	// Swap around random columns in the current key node to set as the next child node.
+	private void swapRandomColumns() {		
+		int c1 = 0, c2 = 0;
+		// Select two unique columns.
+		while(c1 == c2){
+			c1 = (int)Math.floor(Math.random()*5);
+			c2 = (int)Math.floor(Math.random()*5);
+		}
+		// Swap.
+		for (int i = 0; i < 5; i++) {
+			char[][] table = this.getParentTable();
+			char tmpMatrix = table[i][c1];
+			table[i][c1] = table[i][c2];
+			table[i][c2] = tmpMatrix;
+			this.setParentTable(table);
+		}		
+	}
 	// Flip all rows in the current key node to set as the next child node.
 	private void flipRows() {
 		char[][] table = this.getParentTable();
