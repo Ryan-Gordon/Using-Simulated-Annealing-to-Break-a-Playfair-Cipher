@@ -1,6 +1,5 @@
 package ie.gmit.sw.ai.crypto;
 
-import java.util.*;
 /**
  * PlayfairCipher is a Java implementation of the famous Playfair Cipher.
  * 
@@ -12,10 +11,7 @@ import java.util.*;
  * @author ryangordon
  *
  */
-public class PlayfairCipher extends AbstractCipher {
-	private static final String PLAYFAIR_ALPHABET = "ABCDEFGHIKLMNOPQRSTUVWXYZ";
-
-	private String key;
+public class PlayfairCipher implements CipherEncryptor, CipherDecryptor {
 	private String[] diagraphs;
 	
 	public PlayfairCipher(String text) {
