@@ -1,5 +1,8 @@
 package ie.gmit.sw.ai;
 
+import java.util.Scanner;
+
+import ie.gmit.sw.ai.annealing.SimulatedAnnealing;
 import ie.gmit.sw.ai.crypto.PlayfairCipher;
 
 /**
@@ -8,6 +11,7 @@ import ie.gmit.sw.ai.crypto.PlayfairCipher;
  */
 public class CipherBreaker 
 {
+	
     public static void main( String[] args ) throws Throwable
     {
         System.out.println( "Hello World!" );
@@ -24,6 +28,12 @@ public class CipherBreaker
         System.out.println(playEncryption.encrypt("THEQUICKBROWNFXMPDVLAZYGS"));
         PlayfairCipher playEncryption2 = new PlayfairCipher(playEncryption.encrypt("THEQUICKBROWNFXMPDVLAZYGS"));
         System.out.println(playEncryption2.decrypt("THEQUICKBROWNFXMPDVLAZYGS"));
+        
+        SimulatedAnnealing sa = new SimulatedAnnealing();
+        sa.solve(playDecryption, 20);
+        
+        
+        
     }
 }
     
