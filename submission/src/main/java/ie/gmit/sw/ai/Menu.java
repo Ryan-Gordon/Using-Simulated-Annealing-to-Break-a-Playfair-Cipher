@@ -35,10 +35,7 @@ public class Menu {
 		this.menuFlag = true;
 	}
 
-	/**
-	 * Show the menu to users
-	 * @throws Throwable
-	 */
+
 	public void showMenu() throws Throwable {
 		Scanner sc = new Scanner(System.in);
 		while(menuFlag != false) {
