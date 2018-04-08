@@ -8,7 +8,6 @@ import ie.gmit.sw.ai.annealing.SimulatedAnnealing;
 import ie.gmit.sw.ai.crypto.PlayfairCipher;
 
 public class Menu {
-	
 	private PlayfairCipher cipher;
 	private SimulatedAnnealing cipherSolver;
     private FileHandler fh;
@@ -34,6 +33,7 @@ public class Menu {
 			System.out.println("--------------------------------------------");
 			System.out.println("Enter a number to select an option:");
 			System.out.println("1. Break cipher text with simulated annealing (Hobbit Chapter 1)?");
+			System.out.println("2. Break cipher text with simulated annealing (Choose a file)?");
 			
 			int choice = sc.nextInt();
 			System.out.println("--------------------------------------------");
@@ -46,6 +46,24 @@ public class Menu {
 					System.out.print("Enter the temperature: ");
 					System.out.println(cipherSolver.solve(cipher, sc.nextInt()));
 		        break;
+			case 2:
+					//Decrypting custom file
+				 	System.out.print("Enter the path of the txt file you want to decrypt: ");
+					sc.nextLine();
+					String fileName = sc.nextLine();
+					
+					try {
+						cipher = new PlayfairCipher(fh.readFile(fileName));
+					} catch (Throwable e) {
+						// TODO Auto-generated catch block
+						System.out.println("Error reading the file specified : "+ fileName);
+					}
+					cipherSolver = new SimulatedAnnealing();
+					
+					System.out.print("Enter the temperature: ");
+					System.out.println(cipherSolver.solve(cipher, sc.nextInt()));
+		        break;
+			
 			}//switch
 		
 	}
