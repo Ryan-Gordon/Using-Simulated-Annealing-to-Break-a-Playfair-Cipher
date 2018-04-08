@@ -2,7 +2,14 @@ package ie.gmit.sw.ai.crypto;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
-
+/**
+ * KeyHandler is responsible for the management of keys in regards to shuffling and generating
+ * 
+ * 90 percent of the time the keyshuffle is done by swapping random characters 
+ * There are 5 cases with happen 2% of the time which add variation on how the key is shuffled
+ * @author ryangordon
+ *
+ */
 public class KeyHandler {
 	//The alphabet minus J
 	private static final String PLAYFAIR_ALPHABET = "ABCDEFGHIKLMNOPQRSTUVWXYZ";

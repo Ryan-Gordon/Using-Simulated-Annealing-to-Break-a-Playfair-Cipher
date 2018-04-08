@@ -6,7 +6,13 @@ import java.util.Scanner;
 
 import ie.gmit.sw.ai.annealing.SimulatedAnnealing;
 import ie.gmit.sw.ai.crypto.PlayfairCipher;
-
+/**
+ * The menu provides a CLI for users of the applcation.
+ * 
+ * There is a quit option aswell as 6 options for SA, Encrypton and Decryption using SA
+ * @author ryangordon
+ *
+ */
 public class Menu {
 	
 	private boolean menuFlag = false;

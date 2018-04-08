@@ -6,26 +6,21 @@ import ie.gmit.sw.ai.annealing.SimulatedAnnealing;
 import ie.gmit.sw.ai.crypto.PlayfairCipher;
 
 /**
- * Hello world!
- *
+ * CipherBreaker is the 'main' class of this project and the one that should be run
+ * 
+ * When the app is started a Menu is shown and users may choose from 6 options 
+ * Once an option is chosen the Menu object delagates the task to a composed Object and returns the result.
+ * 
+ * @author ryangordon
  */
 public class CipherBreaker 
 {
 	
     public static void main( String[] args ) throws Throwable
-    {
-    	FileHandler fh = new FileHandler();
-        
-        PlayfairCipher playDecryption = new PlayfairCipher(fh.readFile("./files/the-hobbit-cp1.txt"));
-        
-        SimulatedAnnealing sa = new SimulatedAnnealing();
-        sa.solve(playDecryption, 20);
-        
+    {   
         //Present UI to user 
         Menu menu = new Menu();
         menu.showMenu();
-        
-        
     }
 }
     

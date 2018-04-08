@@ -1,7 +1,12 @@
 package ie.gmit.sw.ai.crypto;
-
+/**
+ * Functional Interface CipherEncryptor is an abstraction of one side of the encryption process.
+ * 
+ * @author ryangordon
+ *
+ */
 @FunctionalInterface
 public interface CipherEncryptor {
-	
-	public String decrypt(String key);
+	//Used to encrypt with a provided key
+	public String encrypt(String key);
 }

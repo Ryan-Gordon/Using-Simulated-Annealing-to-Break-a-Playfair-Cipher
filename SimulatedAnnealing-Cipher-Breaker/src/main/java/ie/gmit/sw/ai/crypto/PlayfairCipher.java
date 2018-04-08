@@ -3,9 +3,12 @@ package ie.gmit.sw.ai.crypto;
 /**
  * PlayfairCipher is a Java implementation of the famous Playfair Cipher.
  * 
+ * PlayfairCipher is responsible for the encryption and decryption of text using the famous playfair cipher
  * 
- * The class Playfair cipher currently is an extension of AbstractCipher.
- * AbstractCipher itself is the abstract implementation of two FunctionalInterfaces 
+ * The Cipher class is used to create diagraphs of a provided text as well as remove duplicate characters in line with the spec.
+ * Other than that it just encrypts and decrypts
+ * 
+ * The class Playfair cipher implementation of two FunctionalInterfaces 
  * Each interface performs one side of the encryption/decrpytion process. 
  * 
  * @author ryangordon
