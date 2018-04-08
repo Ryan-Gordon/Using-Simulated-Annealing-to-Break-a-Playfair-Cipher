@@ -40,7 +40,9 @@ public class Menu {
 			System.out.println("2. Break cipher text with simulated annealing (Choose a file)?");
 			System.out.println("3. Decrypt cipher text from command prompt?");
 			System.out.println("4. Decrypt cipher text from a file?");
-			System.out.println("5. Quit?");
+			System.out.println("5. Encrypt cipher text from a command prompt?");
+			System.out.println("6. Encrypt cipher text from a file?");
+			System.out.println("7. Quit?");
 			int choice = sc.nextInt();
 			System.out.println("--------------------------------------------");
 			
@@ -107,8 +109,36 @@ public class Menu {
 			
 				System.out.println("Result " + cipher.decrypt(key));
 				break;
-			
 			case 5:
+				
+				sc.nextLine();
+		        System.out.println("Enter a key:");
+		        key = sc.next();
+				System.out.print("Enter the cipher text to encrypt: ");
+				sc.nextLine();
+				cipher = new PlayfairCipher(sc.nextLine());
+				
+				
+				System.out.println("Result " + cipher.encrypt(key));
+				break;
+			case 6:
+				
+				sc.nextLine();
+		        System.out.println("Enter a key:");
+		        key = sc.next();
+				System.out.print("Enter the name of the txt file you want to encrypt: ");
+				sc.nextLine();
+				
+				try {
+					cipher = new PlayfairCipher(fh.readFile(sc.nextLine()));
+				} catch (Throwable e) {
+					// TODO Auto-generated catch block
+					System.out.println("Error reading the file specified ");
+				}
+			
+				System.out.println("Result " + cipher.encrypt(key));
+				break;
+			case 7:
 				System.out.println("Quitting application");
 				sc.close();
 				menuFlag = false;
